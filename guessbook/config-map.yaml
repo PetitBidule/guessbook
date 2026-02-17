@@ -7,33 +7,6 @@ data:
     pages:
     - name: Home
       columns:
-        - size: small
-          widgets:
-            - type: calendar
-
-            - type: twitch-channels
-              channels:
-                - papesan
-                - anyme023
-                - gotaga
-                - aminematue
-                - squeezie
-                - byilhann
-                - kamalkyta
-
-            - type: rss
-              limit: 10
-              collapse-after: 3
-              cache: 3h
-              feeds:
-                - url: https://justingarrison.com/index.xml
-                - url: https://https://a-cup-of.coffee/index.xml
-                  title: a cup of coffee
-                - url: https://samwho.dev/rss.xml
-                - url: https://blog.stonegarden.dev/index.xml
-                - url: https://ishadeed.com/feed.xml
-                  title: Ahmad Shadeed
-
         - size: full
           widgets:
             - type: search
