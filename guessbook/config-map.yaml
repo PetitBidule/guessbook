@@ -1,0 +1,244 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: glance-argo-config 
+data: 
+  config.yml: |
+    pages:
+    - name: Home
+      columns:
+        - size: small
+          widgets:
+            - type: calendar
+
+            - type: twitch-channels
+              channels:
+                - papesan
+                - anyme023
+                - gotaga
+                - aminematue
+                - squeezie
+                - byilhann
+                - kamalkyta
+
+            - type: rss
+              limit: 10
+              collapse-after: 3
+              cache: 3h
+              feeds:
+                - url: https://justingarrison.com/index.xml
+                - url: https://https://a-cup-of.coffee/index.xml
+                  title: a cup of coffee
+                - url: https://samwho.dev/rss.xml
+                - url: https://blog.stonegarden.dev/index.xml
+                - url: https://ishadeed.com/feed.xml
+                  title: Ahmad Shadeed
+
+        - size: full
+          widgets:
+            - type: search
+              search-engine: google
+              bangs:
+              - title: YouTube
+                shortcut: "!yt"
+                url: https://www.youtube.com/results?search_query={QUERY}
+
+
+            - type: hacker-news
+              limit: 10
+              collapse-after: 3
+
+
+            - type: videos
+              style: grid-cards
+              collapse-after-rows: 2
+              channels:
+                - UCu2e-o9q5_hZgPHCv8m1Qzg # Mont Corvo
+                - UCWeg2Pkate69NFdBeuRFTAw # Squeezie
+                - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+                - UCxH16958KSxT4Z9yL_9JYtw # Ego
+                - UC9x0AN7BWHpCDHSm9NiJFJQ # NetworkChuck
+                - UCNiauGTV7XhkOpUAIXod4xA # Léo Duff
+                - UCWedHS9qKebauVIK2J7383g # Underscore
+                - UCL9aTJb0ur4sovxcppAopEw # Inox
+
+
+            - type: reddit
+              subreddit: selfhosted
+              show-thumbnails: true
+
+        - size: small
+          widgets:
+            - type: weather
+              location: Osny, France
+            
+            - type: server-stats
+              servers:
+                - type: local
+                  name: Services
+
+            - type: markets
+              markets:
+                - symbol: BTC-USD
+                  name: Bitcoin
+                - symbol: NVDA
+                  name: NVIDIA
+                - symbol: AAPL
+                  name: Apple
+                - symbol: MSFT
+                  name: Microsoft
+                - symbol: GOOGL
+                  name: Google
+                - symbol: AMD
+                  name: AMD
+                - symbol: RDDT
+                  name: Reddit
+                  
+    - name: Apps
+      columns:
+        - size: full
+          widgets: 
+            - type: split-column
+              max-columns: 3
+              widgets:
+                - type: monitor 
+                  cache: 1m 
+                  title: Apps
+                  sites:
+                    - title: Synology NAS
+                      url : https://grandbidule.synology.me:5001
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-dsm.png
+                    - title: N8N
+                      url: https://n8n.grandbidule.synology.me/home/workflows
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/n8n.png
+                    - title: Hoarder
+                      url : http://hoarder.raspberrypi
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/hoarder-light.png
+                    - title: FileBrowser
+                      url : http://raspberrypi:30963/login?redirect=%2Ffiles%2F
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/filebrowser.png
+                    - title: MeTube
+                      url : http://metube.raspberrypi
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/metube.png
+                    - title: NextCloud
+                      url : http://raspberrypi:32604/dashboard
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/nextcloud-white.png
+                - type: monitor 
+                  cache: 1m 
+                  title: Media
+                  sites:
+                    - title: Plex
+                      url: http://grandbidule.synology.me:32400/web/index.html#!
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/plex.png
+                    - title: Overseerr
+                      url : http://grandbidule.synology.me:5055/
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/overseerr.png
+                    - title: Prowlarr
+                      url : http://grandbidule.synology.me:9696
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prowlarr.png
+                    - title: Radarr
+                      url : http://grandbidule.synology.me:7878
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/radarr.png
+                    - title: Lidarr
+                      url : http://grandbidule.synology.me:8686
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/lidarr.png
+                    - title: qBittorrent
+                      url : http://192.168.8.215:8085/
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png
+                - type: monitor 
+                  cache: 1m 
+                  title: Monitoring
+                  sites:
+                    - title: Portainer
+                      url: http://grandbidule.synology.me:9000/#!/home
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/portainer.png
+                    - title: Uptime-Kuma
+                      url : http://kuma.raspberrypi
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/uptime-kuma.png
+                    - title: Ntfy
+                      url : https://raspberrypi.tail721037.ts.net/
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/ntfy.png
+                    - title: Grafana
+                      url : http://grafana.raspberrypi
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png
+                    - title: Router
+                      url : http://grandrouter:3000/
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glinet-dark.png
+                    - title: AdGuard Home
+                      url : http://192.168.8.1:3000/
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/adguard-home.png
+                - type: monitor 
+                  cache: 1m 
+                  title: Development
+                  sites:
+                    - title: Gitea
+                      url: http://raspberrypi:32596/GrandBidule
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gitea.png
+                    - title: Code Server
+                      url: http://code.raspberrypi
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/code-server.png
+                - type: monitor 
+                  cache: 1m 
+                  title: Networking
+                  sites:
+                    - title: Tailscale
+                      url: https://login.tailscale.com/admin/machines
+                      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tailscale-light.png
+
+    - name: Gaming
+      columns:
+        - size: small
+          widgets:
+            - type: twitch-top-games
+              limit: 20
+              collapse-after: 13
+              exclude:
+                - just-chatting
+                - pools-hot-tubs-and-beaches
+                - music
+                - art
+                - asmr
+
+        - size: full
+          widgets:
+          - type: group
+            widgets:
+              - type: reddit
+                show-thumbnails: true
+                subreddit: pcgaming
+              - type: reddit
+                subreddit: games
+
+          - type: videos
+            style: grid-cards
+            collapse-after-rows: 3
+            channels:
+              - UC4peNo-31r7fhQZgu0_JRIA # sheshounet
+              - UC2ruguOcwnVR2_4DtiGnmLg # The Great Review
+              - UCn0VbHe_Chjws3qjUF4JJMw # Kombo
+              - UC9PBzalIcEQCsiIkq36PyUA # Digital Foundry
+
+        - size: small
+          widgets:
+          - type: custom-api
+            title: Steam Specials
+            cache: 12h
+            url: https://store.steampowered.com/api/featuredcategories?cc=us
+            template: |
+              <ul class="list list-gap-15 collapsible-container" data-collapse-after="7">
+              {{ range .JSON.Array "specials.items" }}
+                <li>
+                  <a class="size-h4 color-highlight block text-truncate" href="https://store.steampowered.com/app/{{ .Int "id" }}/">{{ .String "name" }}</a>
+                  <ul class="list-horizontal-text">
+                    <li>{{ div (.Int "final_price" | toFloat) 100 | printf "$%.2f" }}</li>
+                    {{ $discount := .Int "discount_percent" }}
+                    <li{{ if ge $discount 40 }} class="color-positive"{{ end }}>{{ $discount }}% off</li>
+                  </ul>
+                </li>
+              {{ end }}
+              </ul>
+
+          - type: reddit
+            subreddit: gamingnews
+            limit: 4
+            style: vertical-cards
