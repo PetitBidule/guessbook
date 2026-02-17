@@ -12,16 +12,16 @@ spec:
     metadata:
       labels:
         app: glance-argo
-  volume:
-    - name: glance-argo-volume
-      configMap:
-        name: glance-argo-config
-  spec:
-    containers:
-      - image: glanceapp/glance
-        name: glance-argo
-        ports:
-          - containerPort: 80
-        volumeMounts:
-          - name: glance-argo-volume
-            mountPath: /app/config
+    spec:
+      volumes:
+        - name: glance-argo-volume
+          configMap:
+            name: glance-argo-config
+      containers:
+        - image: glanceapp/glance
+          name: glance-argo
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: glance-argo-volume
+              mountPath: /app/config
