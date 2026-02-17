@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata: 
   name: glance-argo-config 
 data: 
-  config.yml: |
+  glance.yml: |
     pages:
     - name: Home
       columns:
